@@ -4,7 +4,6 @@ def obter_texto(mensagem):
 
         if texto != "":
             return texto
-<<<<<<< HEAD
         elif texto == "":
             print("Digite algo.")
 
@@ -65,12 +64,3 @@ def obter_opcao(mensagem,opcoes ):
                 print("Digite um numero válido.")
 
                 
-=======
-
-        
-        print("Digite algo.")
-
-def obter_isbn():
-    '''O ISBN deve possuir exatamente 13 dígitos.
-       O ISBN não pode pertencer a outro livro já cadastrado.'''
->>>>>>> 3e3f1e9c783c908e17e52e7af3c41aa66c8b48b2
