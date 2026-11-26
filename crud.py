@@ -1,12 +1,47 @@
-#conversar c a prof
+from utils import (
+    obter_texto,
+    obter_isbn,
+    obter_opcao,
+    obter_preco,
+    obter_quantidade,
+)
+from dados import GENEROS, ESTADO, isbn_cadastrados
+from arquivos import ler_livros, adicionar_livros
 
-from utils import obter_opcao
-from dados import GENEROS, ESTADOS
+def cadastrar_livros():
+    livros_existentes = ler_livros()
 
-genero = obter_opcao("Escolha o gênero do livro: ", GENEROS)
+    isbn_cadastrados = {
+    livro["isbn"] for livro in livros_existentes
+    }
 
-print("\nGênero selecionado:", genero)
+    titulo = obter_texto("Digite o título: ")
+    autor = obter_texto("Digite o autor: ")
+    isbn = obter_isbn(isbn_cadastrados)
+    genero = obter_opcao("Escolha o gênero: ", GENEROS)
+    estado = obter_opcao("Escolha o estado de conservação do livro: ", ESTADO)
+    preco = obter_preco()
+    quantidade = obter_quantidade()
 
-estado = obter_opcao("Escolha o estado de conservação: ", ESTADOS)
+    codigo = 1
 
-print("\nEstado selecionado:", estado)
+    for livro in livros_existentes:
+        if livro["codigo"] >= codigo:
+            codigo = livro["codigo"] + 1
+
+
+    novo_livro = {
+        "codigo": codigo,
+        "titulo": titulo,
+        "autor": autor,
+        "isbn": isbn,
+        "genero": genero,
+        "estado": estado,
+        "preco": preco,
+        "quantidade": quantidade
+    }
+
+    adicionar_livros(novo_livro)
+
+    print("Livro cadastrado com sucesso!")
+    print("Código:", codigo)
