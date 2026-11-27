@@ -45,3 +45,19 @@ def cadastrar_livros():
 
     print("Livro cadastrado com sucesso!")
     print("Código:", codigo)
+
+    def mostrar_livros ():
+        livros = ler_livros()
+        if not livros:
+            print("O acervo está vazio.")
+            return
+
+        print("======== ACERVO DE LIVROS ========\n")
+        print(
+            f"{'CÓDIGO':<8}"
+            f"{'TÍTULO':<28}"
+            f"{'AUTOR':<25}"
+            f"{'GÊNERO':<15}"
+            f"{'PREÇO (R$)':>10}"
+            f"{'QTD':>6}"
+        )
