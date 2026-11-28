@@ -18,3 +18,11 @@ def adicionar_livros(novo_livro):
             json.dump(livros, arquivo)
     except:        
         print("Erro ao salvar o arquivo.")
+
+def salvar_livros(livros):
+    try:
+        with open("dados/acervo.json","w", encoding="utf-8") as arquivo:
+            json.dump(livros, arquivo)
+
+    except:
+        print("Erro!!")
